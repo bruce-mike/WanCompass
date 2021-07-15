@@ -1,0 +1,8 @@
+#ifndef SOFTWARE_VERSION_H
+#define SOFTWARE_VERSION_H
+
+
+#define SOFTWARE_VERSION    "1.00.00"
+
+
+#endif

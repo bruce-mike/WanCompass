@@ -14,6 +14,8 @@
 #include "storedconfig.h"
 #include "compass.h"
 #include "i2c.h"
+#include "software_version.h"
+
 
 #define WATCHDOG_FEEDING_TIME_MS 10000 // 10 seconds
 #define STAY_AWAKE_TIME_MS 500 // 0.5 seconds
@@ -33,7 +35,7 @@ void WatchdogTimerInit(void)
 
 int main(void)
 {
-	int k; // no C program complete without an int
+	int k; 
 	int theResetSource = RSIR;
 	BOOL resetInit = TRUE; // for a POR
 	BOOL initDone = FALSE;
@@ -90,6 +92,8 @@ int main(void)
 	/////
 	serialInit();
 
+    printf("Version[%s]  HWID[%d]\r\n", SOFTWARE_VERSION, hwGetRevNumber());
+
 	if((theResetSource & POR) == POR) 
 	{
 		// then a power on reset
@@ -117,8 +121,8 @@ int main(void)
 	// feed the watchdog
 	/////		
 	hwPetWatchDog();
-	printf("hwGetRevNumber: %d\n", hwGetRevNumber());
-	
+    
+
 	while(1)
 	{
 		if(initDone == FALSE)
