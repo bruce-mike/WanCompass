@@ -14,6 +14,7 @@
 #include "compass.h"
 #include "quaternionFilters.h"
 #include "path.h"
+#include "software_version.h"
 
 #define NUMBER_OF_INITIAL_CAL_POSITIONS 6
 
@@ -460,7 +461,7 @@ BOOL compassRun(BOOL init)
                 else if(strncmp("getinit", bMessage, 10) == 0)
                 {			
 					setSpeed(TRUE);
-					printf("VERSION, %s, %s, %s, %s \n", __FILE__, THE_FILE_PATH1, __DATE__, __TIME__);
+					printf("VERSION, %s, %s, %s, %s \n", __FILE__, SOFTWARE_VERSION, __DATE__, __TIME__);
 					
 					if(getWhoAmI(&whoAmI9250, &whoamI8963) == TRUE)
 					{
